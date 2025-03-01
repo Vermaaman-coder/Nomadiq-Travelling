@@ -1,14 +1,14 @@
-import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FaPlane, FaHotel, FaCar } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { FaCar, FaHotel, FaPlane } from "react-icons/fa";
 import {
   IoMdGlobe,
   IoMdHeart,
-  IoMdPerson,
-  IoMdMenu,
   IoMdHelpCircle,
+  IoMdMenu,
+  IoMdPerson,
 } from "react-icons/io";
 import { MdFlag } from "react-icons/md";
+import { Link } from "react-router-dom";
 import RegionalSettingsModal from "./RegionalSettings";
 
 const Header = () => {
@@ -37,23 +37,34 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-gradient-to-r from-[#1B1F3B] to-[#3B82F6] text-white px-8 py-5 flex items-center justify-between relative shadow-md">
+      <header className="bg-gradient-to-r from-[#1B1F3B] to-[#3B82F6] text-white px-15 py-7 flex items-center justify-between relative shadow-md">
         <div className="flex items-center space-x-8">
-          <h1 className="text-2xl font-bold cursor-pointer">Skyscanner</h1>
+          <Link to="/">
+            <div
+              className="w-25 h-10 bg-cover bg-center cursor-pointer"
+              style={{ backgroundImage: "url('./image.png')" }}
+            ></div>
+          </Link>
           <nav className="hidden md:flex space-x-3">
-            <button className="relative bg-[#0066FF] px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#0055CC] transition">
-              <FaPlane className="text-white text-lg" /> <span>Flights</span>
-            </button>
-            <button className="relative border border-gray-400 px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#1C2B45] transition">
-              <FaHotel className="text-white text-lg" /> <span>Hotels</span>
-            </button>
-            <button className="relative border border-gray-400 px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#1C2B45] transition">
-              <FaCar className="text-white text-lg" /> <span>Car hire</span>
-            </button>
+            <Link to="/flights">
+              <button className="relative bg-[#0066FF] px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#0055CC] transition">
+                <FaPlane className="text-white text-lg" /> <span>Flights</span>
+              </button>
+            </Link>
+            <Link to="/hotels">
+              <button className="relative border border-gray-400 px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#1C2B45] transition">
+                <FaHotel className="text-white text-lg" /> <span>Hotels</span>
+              </button>
+            </Link>
+            <Link to="/cab-hire">
+              <button className="relative border border-gray-400 px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#1C2B45] transition">
+                <FaCar className="text-white text-lg" /> <span>Cab hire</span>
+              </button>
+            </Link>
           </nav>
         </div>
 
-        <div className="flex space-x-5 items-center">
+        <div className="flex space-x-7 items-center">
           <IoMdGlobe className="text-gray-200 text-xl cursor-pointer hover:text-gray-400 transition" />
           <IoMdHeart className="text-gray-200 text-xl cursor-pointer hover:text-gray-400 transition" />
           <IoMdPerson className="text-gray-200 text-xl cursor-pointer hover:text-gray-400 transition" />
@@ -79,25 +90,29 @@ const Header = () => {
         >
           <ul>
             <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
-              <FaPlane className="text-[#0066FF]" /> <span>Flights</span>
+              <Link to="/flights" className="flex items-center space-x-3 w-full">
+                <FaPlane className="text-[#0066FF]" /> <span>Flights</span>
+              </Link>
             </li>
             <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
-              <FaHotel className="text-[#0066FF]" /> <span>Hotels</span>
+              <Link to="/hotels" className="flex items-center space-x-3 w-full">
+                <FaHotel className="text-[#0066FF]" /> <span>Hotels</span>
+              </Link>
             </li>
             <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
-              <FaCar className="text-[#0066FF]" /> <span>Car hire</span>
+              <Link to="/cab-hire" className="flex items-center space-x-3 w-full">
+                <FaCar className="text-[#0066FF]" /> <span>Cab hire</span>
+              </Link>
             </li>
             <hr className="border-gray-300 my-2" />
             <li
               className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer"
               onClick={() => setIsModalOpen(true)}
             >
-              <MdFlag className="text-[#0066FF]" />{" "}
-              <span>Regional settings</span>
+              <MdFlag className="text-[#0066FF]" /> <span>Regional settings</span>
             </li>
             <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
-              <IoMdGlobe className="text-[#0066FF]" />{" "}
-              <span>Explore everywhere</span>
+              <IoMdGlobe className="text-[#0066FF]" /> <span>Explore everywhere</span>
             </li>
             <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
               <IoMdHelpCircle className="text-[#0066FF]" />
