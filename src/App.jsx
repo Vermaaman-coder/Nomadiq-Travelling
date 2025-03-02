@@ -1,24 +1,29 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./page/Home";
-import Header from "./components/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FlightBooking from "./components/FlightBooking";
 import Footer from "./components/Footer";
-import Help from "./components/Help"; // Import the Help component
+import Header from "./components/Header";
+import HotelBooking from "./components/HotelBooking";
+import Home from "./page/Home";
+// import About from "./page/About";
+import CarBooking from "./components/CarBooking";
+import Help from "./components/Help";
 
 const App = () => {
   return (
     <BrowserRouter>
-      {/* Header remains visible on all pages */}
-      <Header />  
+      <Header />
 
-      {/* Main content routes */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<p>About Us</p>} />
-        <Route path="/help" element={<Help />} /> {/* Help page route */}
+        <Route path="/flights" element={<FlightBooking />} />
+        <Route path="/hotels" element={<HotelBooking />} />
+        <Route path="/cab-hire" element={<CarBooking />} />
+        {/* <Route path="/contact" element={<p>Contact Us</p>} /> */}
+        {/* <Route path="/about" element={<p>About Us</p>} /> */}
+        <Route path="/help" element={<Help />} />
       </Routes>
 
-      {/* Footer remains visible on all pages */}
       <Footer />
     </BrowserRouter>
   );
