@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const CabBooking = () => {
   const [pickupLocation, setPickupLocation] = useState("");
@@ -25,17 +26,33 @@ const CabBooking = () => {
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-65 w-full max-w-5xl px-6">
-        
-        <div className="text-center md:text-left text-white p-3 rounded-lg shadow-lg w-max"
-     style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
-  <h1 className="text-5xl font-bold text-blue-600">Nomadiq</h1>
-  <p className="text-xl whitespace-nowrap">Book your perfect car ride today</p>
-</div>
+      <motion.div
+        className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 w-full max-w-5xl px-6"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        {/* Logo Section with Hover Animation */}
+        <motion.div
+          className="text-center md:text-left text-white p-3 rounded-lg shadow-lg w-max"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
+          <h1 className="text-5xl font-bold text-blue-600">Nomadiq</h1>
+          <p className="text-xl whitespace-nowrap">
+            Book your perfect car ride today
+          </p>
+        </motion.div>
 
-
-
-        <div className="w-full max-w-md p-6 bg-white bg-opacity-90 shadow-lg backdrop-blur-md rounded-lg">
+        {/* Booking Form */}
+        <motion.div
+          className="w-full max-w-md p-6 bg-white bg-opacity-90 shadow-lg backdrop-blur-md rounded-lg"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          whileHover={{ scale: 1.02 }}
+        >
           <h2 className="text-2xl font-bold text-gray-800 text-center mb-4">
             Cab Booking
           </h2>
@@ -89,15 +106,19 @@ const CabBooking = () => {
                 <option value="hatchback">Hatchback</option>
               </select>
             </div>
-            <button
+            {/* Button with Framer Motion Animation */}
+            <motion.button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition cursor-pointer"
+              className="w-full bg-blue-500 text-white py-2 rounded-md"
+              whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
             >
               Book Cab
-            </button>
+            </motion.button>
           </form>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
