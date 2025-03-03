@@ -5,7 +5,8 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HotelBooking from "./components/HotelBooking";
 import Home from "./page/Home";
-// import About from "./page/About";
+import About from "./page/About";
+import ContactUs from "./page/Contact";
 import CarBooking from "./components/CarBooking";
 import Help from "./components/Help";
 
@@ -19,8 +20,8 @@ const App = () => {
         <Route path="/flights" element={<FlightBooking />} />
         <Route path="/hotels" element={<HotelBooking />} />
         <Route path="/cab-hire" element={<CarBooking />} />
-        {/* <Route path="/contact" element={<p>Contact Us</p>} /> */}
-        {/* <Route path="/about" element={<p>About Us</p>} /> */}
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/about" element={<About />} />
         <Route path="/help" element={<Help />} />
       </Routes>
 

@@ -9,6 +9,7 @@ import {
 } from "react-icons/io";
 import { MdFlag } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import RegionalSettingsModal from "./RegionalSettings";
 
 const Header = () => {
@@ -37,7 +38,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-gradient-to-r from-[#1B1F3B] to-[#3B82F6] text-white px-15 py-7 flex items-center justify-between relative shadow-md">
+      <header className="bg-[#002B88] text-white px-15 py-7 flex items-center justify-between relative shadow-md">
         <div className="flex items-center space-x-8">
           <Link to="/">
             <div
@@ -46,38 +47,48 @@ const Header = () => {
             ></div>
           </Link>
           <nav className="hidden md:flex space-x-3">
-            <Link to="/flights">
-              <button className="relative bg-[#0066FF] px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#0055CC] transition">
-                <FaPlane className="text-white text-lg" /> <span>Flights</span>
-              </button>
-            </Link>
-            <Link to="/hotels">
-              <button className="relative border border-gray-400 px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#1C2B45] transition">
-                <FaHotel className="text-white text-lg" /> <span>Hotels</span>
-              </button>
-            </Link>
-            <Link to="/cab-hire">
-              <button className="relative border border-gray-400 px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#1C2B45] transition">
-                <FaCar className="text-white text-lg" /> <span>Cab hire</span>
-              </button>
-            </Link>
+            {[
+              { to: "/flights", icon: <FaPlane />, label: "Flights" },
+              { to: "/hotels", icon: <FaHotel />, label: "Hotels" },
+              { to: "/cab-hire", icon: <FaCar />, label: "Cab hire" },
+            ].map((item, index) => (
+              <Link key={index} to={item.to}>
+                <motion.button
+                  whileHover={{ scale: 1.1, backgroundColor: "#0044AA" }}
+                  className="relative bg-[#0066FF] px-5 py-2 text-md rounded-full flex items-center space-x-2 text-white hover:bg-[#0055CC] transition cursor-pointer"
+                >
+                  {item.icon} <span>{item.label}</span>
+                </motion.button>
+              </Link>
+            ))}
           </nav>
         </div>
 
         <div className="flex space-x-7 items-center">
-          <IoMdGlobe className="text-gray-200 text-xl cursor-pointer hover:text-gray-400 transition" />
-          <IoMdHeart className="text-gray-200 text-xl cursor-pointer hover:text-gray-400 transition" />
-          <IoMdPerson className="text-gray-200 text-xl cursor-pointer hover:text-gray-400 transition" />
-          <button className="bg-transparent text-md font-semibold cursor-pointer hover:text-gray-400 transition">
+          {[IoMdGlobe, IoMdHeart, IoMdPerson].map((Icon, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.2, color: "#66CCFF" }}
+              className="text-xl cursor-pointer transition"
+            >
+              <Icon />
+            </motion.div>
+          ))}
+          <motion.button
+            whileHover={{ scale: 1.1, color: "#66CCFF" }}
+            className="bg-transparent text-md font-semibold cursor-pointer transition"
+          >
             Log in
-          </button>
-          <IoMdMenu
+          </motion.button>
+          <motion.div
             ref={menuButtonRef}
-            className={`text-white text-2xl cursor-pointer hover:text-gray-300 transition-transform duration-300 ${
-              isMenuOpen ? "rotate-90" : ""
-            }`}
+            className="text-white text-2xl cursor-pointer transition-transform duration-300"
+            animate={{ rotate: isMenuOpen ? 90 : 0 }}
+            whileHover={{ scale: 1.2, color: "#66CCFF" }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-          />
+          >
+            <IoMdMenu />
+          </motion.div>
         </div>
 
         <div
@@ -89,30 +100,20 @@ const Header = () => {
           }`}
         >
           <ul>
-            <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
-              <Link to="/flights" className="flex items-center space-x-3 w-full">
-                <FaPlane className="text-[#0066FF]" /> <span>Flights</span>
-              </Link>
-            </li>
-            <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
-              <Link to="/hotels" className="flex items-center space-x-3 w-full">
-                <FaHotel className="text-[#0066FF]" /> <span>Hotels</span>
-              </Link>
-            </li>
-            <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
-              <Link to="/cab-hire" className="flex items-center space-x-3 w-full">
-                <FaCar className="text-[#0066FF]" /> <span>Cab hire</span>
-              </Link>
-            </li>
+            {[
+              { to: "/flights", icon: <FaPlane />, label: "Flights" },
+              { to: "/hotels", icon: <FaHotel />, label: "Hotels" },
+              { to: "/cab-hire", icon: <FaCar />, label: "Cab hire" },
+            ].map((item, index) => (
+              <li key={index} className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
+                <Link to={item.to} className="flex items-center space-x-3 w-full">
+                  {item.icon} <span>{item.label}</span>
+                </Link>
+              </li>
+            ))}
             <hr className="border-gray-300 my-2" />
-            <li
-              className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => setIsModalOpen(true)}
-            >
+            <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => setIsModalOpen(true)}>
               <MdFlag className="text-[#0066FF]" /> <span>Regional settings</span>
-            </li>
-            <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
-              <IoMdGlobe className="text-[#0066FF]" /> <span>Explore everywhere</span>
             </li>
             <li className="flex items-center space-x-3 px-5 py-2 hover:bg-gray-100 cursor-pointer">
               <IoMdHelpCircle className="text-[#0066FF]" />
@@ -124,11 +125,7 @@ const Header = () => {
         </div>
       </header>
 
-      {/* ✅ Regional Settings Modal (Controlled by State) */}
-      <RegionalSettingsModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      <RegionalSettingsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };

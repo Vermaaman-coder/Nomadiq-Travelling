@@ -56,7 +56,6 @@ const RegionalSettings = ({ isOpen, onClose }) => {
             onChange={(e) => setCountry(e.target.value)}
           >
             <option>India</option>
-            <option>United Kingdom</option>
             <option>United States</option>
             <option>Canada</option>
           </select>
@@ -70,7 +69,6 @@ const RegionalSettings = ({ isOpen, onClose }) => {
             onChange={(e) => setCurrency(e.target.value)}
           >
             <option>INR - ₹</option>
-            <option>GBP - £</option>
             <option>USD - $</option>
             <option>EUR - €</option>
           </select>
