@@ -1,56 +1,88 @@
 import React from "react";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="mt-auto flex-grow bg-gradient-to-b from-[#1B1F3B] to-[#87CEEB] text-white py-4 px-4">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row flex-wrap justify-between items-start">
-        
-        {/* Language & Currency Button */}
-        <div className="mb-4">
-          <button className="bg-[#0066FF] text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-[#0052CC]">
-            United Kingdom &middot; English (UK) &middot; £ GBP
-          </button>
+    <footer className="bg-[#002B88] text-white py-8 px-4 md:px-6">
+      <div className="max-w-8xl mx-25 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center md:text-left">
+        <div className="flex flex-col items-center md:items-start">
+          <h2 className="text-2xl font-bold">Nomadiq</h2>
+          <p className="mt-2 text-sm">
+            Smart Booking automatically finds and books flights at the lowest
+            price, so you don’t have to set your preferences, and let Nomadiq
+            handle the rest!
+          </p>
         </div>
 
-        {/* Footer Links Section */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-sm">
-          {/* Help Section */}
-          <div>
-            <p className="font-semibold">Help</p>
-            <ul>
-              <li className="cursor-pointer hover:underline">Privacy Settings</li>
-              <li className="cursor-pointer hover:underline">Log in</li>
-            </ul>
-          </div>
+        <div className="flex flex-col items-center">
+          <h3 className="text-lg font-semibold">USEFUL LINKS</h3>
+          <ul className="mt-2 space-y-1">
+            <li className="hover:underline cursor-pointer">
+              <a href="/about">About us</a>
+            </li>
+            {/* Coming Soon */}
+            {/* <li className="hover:underline cursor-pointer">
+                <a href="/careers">Careers</a>
+              </li> */}
+            <li className="hover:underline cursor-pointer">
+              <a href="/contact">Contact us</a>
+            </li>
+          </ul>
+        </div>
 
-          {/* Legal Section */}
-          <div>
-            <p className="font-semibold">Legal</p>
-            <ul>
-              <li className="cursor-pointer hover:underline">Cookie policy</li>
-              <li className="cursor-pointer hover:underline">Privacy policy</li>
-              <li className="cursor-pointer hover:underline">Terms of service</li>
-              <li className="cursor-pointer hover:underline">Company Details</li>
-            </ul>
-          </div>
-
-          {/* Explore Section */}
-          <div>
-            <p className="font-semibold">Explore</p>
-            <ul>
-              <li className="cursor-pointer hover:underline">Company</li>
-              <li className="cursor-pointer hover:underline">Partners</li>
-              <li className="cursor-pointer hover:underline">Trips</li>
-              <li className="cursor-pointer hover:underline">International Sites</li>
-            </ul>
-          </div>
+        <div className="flex flex-col items-center md:items-end">
+          <h3 className="text-lg font-semibold">CONTACT INFO</h3>
+          <p className="mt-2 text-sm">
+            <span className="font-bold">Address:</span> Madhubani Sadar,
+            Madhubani, Bihar-847211, INDIA
+          </p>
+          <p className="text-sm">+91-7870759165</p>
         </div>
       </div>
 
-      {/* Footer Bottom Text */}
-      <div className="text-center mt-6 text-sm">
-        <p>Smart Booking flights from anywhere, to everywhere</p>
-        <p>© Nomadiq Ltd 2025</p>
+      <hr className="border-gray-500 my-6" />
+
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-center">
+        <div className="flex space-x-4 justify-center md:justify-start w-full md:w-auto">
+          <span className="hover:underline cursor-pointer">Terms</span>
+          <span className="hover:underline cursor-pointer">Privacy</span>
+          <span className="hover:underline cursor-pointer">Cookies</span>
+        </div>
+        <div className="flex space-x-6 mt-4 md:mt-0 justify-center md:justify-end w-full md:w-auto">
+          <a
+            href="https://www.facebook.com/share/1DEFrw9Ync/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF className="text-2xl cursor-pointer hover:scale-110 transition duration-200" />
+          </a>
+          <a
+            href="https://x.com/travelnomadiq?s=21"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter className="text-2xl cursor-pointer hover:scale-110 transition duration-200" />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/travelnomadiq/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedinIn className="text-2xl cursor-pointer hover:scale-110 transition duration-200" />
+          </a>
+          <a
+            href="https://www.instagram.com/travelnomadiq?igsh=OXpoMXN3MWU2a2Ez"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="text-2xl cursor-pointer hover:scale-110 transition duration-200" />
+          </a>
+        </div>
       </div>
     </footer>
   );
